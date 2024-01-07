@@ -355,6 +355,7 @@ ul {
         box-shadow: 0px 4px 5px #1b1b1b1f;
         background: var(--secondary-bg);
         height: auto;
+        min-height: 300px;
         margin-top: 55px;
         border-top-right-radius: 10px;
         border-bottom-right-radius: 10px;
@@ -365,7 +366,6 @@ ul {
     .nav-menu.active {
         left: 0;
         padding: 24px 16px;
-        min-height: 300px;
     }
 
     .nav-item {
