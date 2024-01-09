@@ -407,7 +407,7 @@ ul {
         position: absolute;
         left: 0;
         right: 0;
-        height: 3px;
+        height: 4px;
         border-radius: calc(4px / 2);
         background: var(--color1);
         color: inherit;
