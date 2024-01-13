@@ -1,118 +1,79 @@
-
 const theme = (function () {
-    const checkbox = document.querySelector(".input");
 
-    function setDarkModePreference(isDarkMode) {
-        localStorage.setItem('darkMode', isDarkMode);
+    const c = document.querySelector(".input");
+
+    function setDM(dm) {
+        localStorage.setItem('darkMode', dm);
     }
 
-    function toggleDarkMode() {
-        const isDarkMode = document.body.classList.contains("dark");
-        document.body.classList.toggle("dark", !isDarkMode);
-        setDarkModePreference(!isDarkMode);
+    function toggledm() {
+        const dm = document.body.classList.contains("dark");
+        document.body.classList.toggle("dark", !dm);
+        setDM(!dm);
     }
 
-    function checkDarkModePreference() {
-        const isDarkMode = localStorage.getItem('darkMode') === 'true';
-        document.body.classList.toggle('dark', isDarkMode);
-        checkbox.checked = isDarkMode;
+    function checkdmPref() {
+        const dm = localStorage.getItem('darkMode') === 'true';
+        document.body.classList.toggle('dark', dm);
+        c.checked = dm;
     }
 
-    checkbox.addEventListener("click", toggleDarkMode);
+    c.addEventListener("click", toggledm);
 
-    checkDarkModePreference();
+    checkdmPref();
 })();
 
-// const checkbox = document.getElementById("checkbox"); // Assuming #checkbox is an input element
-const hamburger = document.querySelector("#checkbox");
-const navMenu = document.querySelector(".nav-menu");
-const navMenuOverlay = document.querySelector(".overlay");
-const navLink = document.querySelectorAll(".nav-link");
+const navbar = (function () {
 
-navLink.forEach(n => n.addEventListener("click", closeMenu));
-hamburger.addEventListener("change", mobileMenu);
+    const h = document.querySelector("#checkbox");
+    const nm = document.querySelector(".nav-menu");
+    const nmo = document.querySelector(".overlay");
+    const nl = document.querySelectorAll(".nav-link");
 
-function mobileMenu() {
-    if (hamburger.checked) {
-        // The checkbox is checked, meaning the menu should be active
-        navMenu.classList.add("active");
-        navMenuOverlay.classList.add("active");
-    } else {
-        // The checkbox is not checked, meaning the menu should be inactive
-        navMenu.classList.remove("active");
-        navMenuOverlay.classList.remove("active");
+    nl.forEach(n => n.addEventListener("click", closeMenu));
+    h.addEventListener("change", mobileMenu);
+
+    function mobileMenu() {
+        if (h.checked) {
+            nm.classList.add("active");
+            nmo.classList.add("active");
+        } else {
+            nm.classList.remove("active");
+            navMenuOverlay.classList.remove("active");
+        }
     }
-}
 
-function closeMenu() {
-    if (hamburger.checked) {
-        hamburger.checked = false; // Uncheck the checkbox
-        // The checkbox is not checked, meaning the menu should be inactive
-        navMenu.classList.remove("active");
-        navMenuOverlay.classList.remove("active");
+    function closeMenu() {
+        if (h.checked) {
+            h.checked = false;
+            nm.classList.remove("active");
+            nmo.classList.remove("active");
+        }
     }
-}
 
-const navbar = document.querySelector('.navbar');
-const navbarLinks = document.querySelectorAll('.nav-item .nav-link');
+    const nb = document.querySelector('.navbar');
+    const nbl = document.querySelectorAll('.nav-item .nav-link');
 
-navbarLinks.forEach(link => {
-    link.addEventListener('click', e => {
-        e.preventDefault();
-        const targetId = e.target.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        const navbarHeight = navbar.offsetHeight;
-        const targetPosition = targetElement.offsetTop - navbarHeight;
-        const duration = 20000;
-        const delay = 100;
-        setTimeout(() => {
-            window.scroll({
-                top: targetPosition,
-                left: 0,
-                behavior: 'smooth',
-                duration: duration
-            });
-        }, delay);
+    nbl.forEach(link => {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            const targetId = e.target.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            const navbarHeight = nb.offsetHeight;
+            const targetPosition = targetElement.offsetTop - navbarHeight;
+            const duration = 20000;
+            const delay = 100;
+            setTimeout(() => {
+                window.scroll({
+                    top: targetPosition,
+                    left: 0,
+                    behavior: 'smooth',
+                    duration: duration
+                });
+            }, delay);
+        });
     });
-});
-
-function randomValues() {
-    anime({
-        targets: '.shape-container .el',
-        translateX: function () {
-            return anime.random(-20, 20) + 'vw';
-        },
-        translateY: function () {
-            return anime.random(-20, 20) + 'vh';
-        },
-        scale: function () {
-            return anime.random(1, 1.5);
-        },
-        rotate: function () {
-            return anime.random(-180, 180);
-        },
-        duration: function () {
-            return anime.random(2000, 4000);
-        },
-        borderRadius: [
-            {
-                value: '20%'
-            },
-            {
-                value: anime.random(12, 15) + '%', duration: 100
-            },
-            {
-                value: '50%', duration: 1000
-            }
-        ],
-        easing: 'easeOutElastic(.9, 1)',
-    });
-}
-
-window.addEventListener('load', function () {
-    randomValues();
-    setInterval(randomValues, 4000);
-});
+})();
 
 const subCards = (function () {
 
@@ -123,10 +84,10 @@ const subCards = (function () {
         document.querySelector(".m-4-content"),
         document.querySelector(".t-1-content"),
         document.querySelector(".t-2-content"),
+        document.querySelector(".t-3-content"),
         document.querySelector(".w-1-content"),
         document.querySelector(".w-2-content"),
         document.querySelector(".w-3-content"),
-        document.querySelector(".w-4-content"),
         document.querySelector(".th-1-content"),
         document.querySelector(".th-2-content"),
         document.querySelector(".th-3-content"),
@@ -140,10 +101,10 @@ const subCards = (function () {
         document.querySelector(".m_4"),
         document.querySelector(".t_1"),
         document.querySelector(".t_2"),
+        document.querySelector(".t_3"),
         document.querySelector(".w_1"),
         document.querySelector(".w_2"),
         document.querySelector(".w_3"),
-        document.querySelector(".w_4"),
         document.querySelector(".th_1"),
         document.querySelector(".th_2"),
         document.querySelector(".th_3"),
@@ -157,41 +118,66 @@ const subCards = (function () {
         document.querySelector(".close-m-4"),
         document.querySelector(".close-t-1"),
         document.querySelector(".close-t-2"),
+        document.querySelector(".close-t-3"),
         document.querySelector(".close-w-1"),
         document.querySelector(".close-w-2"),
         document.querySelector(".close-w-3"),
-        document.querySelector(".close-w-4"),
         document.querySelector(".close-th-1"),
         document.querySelector(".close-th-2"),
         document.querySelector(".close-th-3"),
         document.querySelector(".close-f-1")
     ];
 
-    let activeIndex = -1; // Initialize as no active element 
+    console.log(closeButtons);
+
+    let activeIndex = -1;
 
     for (let i = 0; i < subContentButtons.length; i++) {
 
         subContentButtons[i].addEventListener("click", () => {
-            if (activeIndex !== -1) {
-                subContents[activeIndex].classList.remove("active");
-                subContents[activeIndex].classList.add("closing");          // Add a class to trigger the closing transition 
-                setTimeout(() => {
-                    subContents[activeIndex].classList.remove("closing");   // Remove the closing class after a delay 
-                }, 500);                                                    // Adjust the timeout value to match your CSS transition duration 
-            } subContents[i].classList.toggle("active");
-            activeIndex = i;
 
-        }); closeButtons[i].addEventListener("click", () => {
-            subContents[i].classList.add("closing");                        // Add a class to trigger the closing transition 
+            for (let y = 0; y < subContentButtons.length; y++) {
+                subContentButtons[y].disabled = true;
+            }
+
+            subContentButtons[i].disabled = true;
+
+            if (activeIndex !== -1 && activeIndex !== i) {
+
+                subContents[activeIndex].classList.remove("active");
+                subContents[activeIndex].classList.add("closing");
+
+                setTimeout(() => {
+                    subContents[activeIndex].classList.remove("closing");
+                }, 500);
+
+            }
+
+            subContents[i].classList.toggle("active");
+            activeIndex = (activeIndex === i && subContents[i].classList.contains("active")) ? -1 : i;
+
+        });
+
+        closeButtons[i].addEventListener("click", () => {
+
+            subContents[i].classList.add("closing");
+
             setTimeout(() => {
                 subContents[i].classList.remove("active");
-                subContents[i].classList.remove("closing");                 // Remove the closing class after a delay 
-            }, 500);                                                        // Adjust the timeout value to match your CSS transition duration 
+                subContents[i].classList.remove("closing");
+                subContentButtons[i].disabled = false;
+                for (let y = 0; y < subContentButtons.length; y++) {
+                    subContentButtons[y].disabled = false;
+                }
+            }, 500);
+
             activeIndex = -1;
+
         });
     }
 
     document.addEventListener("DOMContentLoaded", function () {
+
         const lazyImages = document.querySelectorAll(".lazy-load");
 
         if ("IntersectionObserver" in window) {
@@ -199,7 +185,7 @@ const subCards = (function () {
                 entries.forEach(function (entry) {
                     if (entry.isIntersecting) {
                         const lazyImage = entry.target;
-                        lazyImage.src = lazyImage.getAttribute("data-src"); // Display the full-resolution image
+                        lazyImage.src = lazyImage.getAttribute("data-src");
                         lazyImage.classList.remove("lazy-load");
                         observer.unobserve(lazyImage);
                     }
@@ -210,55 +196,52 @@ const subCards = (function () {
                 observer.observe(lazyImage);
             });
         } else {
-            // Fallback for older browsers
             lazyImages.forEach(function (lazyImage) {
-                lazyImage.src = lazyImage.getAttribute("data-src"); // Display the full-resolution image
+                lazyImage.src = lazyImage.getAttribute("data-src");
                 lazyImage.classList.remove("lazy-load");
             });
         }
     });
 
-    let updateStatusInterval; // Define the interval variable
+    let updateStatusInterval;
 
     function updateStatus() {
         const now = new Date();
         for (const subject in announcement) {
-            const subjectAnnouncements = announcement[subject];
-            subjectAnnouncements.forEach((item) => {
-                const timeDiffMilliseconds = new Date(item.datetime) - now;
-                const timeDiffHours = timeDiffMilliseconds / (1000 * 60 * 60);
-                const timeout = Math.floor(0.0001 * 60 * 60 * 1000);
-                if (item.status === 'important') {
-                    item.status = 'important';
-                    if (timeDiffMilliseconds <= 0) {
-                        item.status = 'in-progress';
-                        console.log("Remaining " + timeDiffHours);
-                        setTimeout(() => {
-                            updateDisplayedContent();
-                            console.log("text: " + item.text + "\n");
-                            console.log("first updatedDisplay");
-                            item.status = 'done';
-                            //item.range = 0;
-                        }, timeout);
+            const j = announcement[subject];
+            j.forEach((i) => {
+                const
+                    start = (new Date(i.start) - now) / 1000,
+                    end = (new Date(i.end) - now) / 1000,
+                    c = console.log;
+                if (i.status === 'important' && i.text != '') {
+                    i.status = 'important';
+                    c("text1:   " + i.text);
+                    c("start1:  " + start);
+                    c("end1:    " + end);
+                    if (start <= 1) {
+                        i.status = 'in-progress';
+                        updateDisplayedContent();
                     }
-                    if (item.status === 'done') {
-                        if (prevStatus === 'in-progress') {
-                            const remainingTimeout = prevTimeout - timeDiffMilliseconds;
-                            if (remainingTimeout > 0) {
-                                setTimeout(() => {
-                                    updateDisplayedContent();
-                                    console.log("2nd updatedDisplay");
-                                    item.status = 'done';
-                                }, remainingTimeout);
-                            }
-                        }
-                    }
-                } else if (item.status === 'normal') {
-                    item.status = 'normal';
+                    c("STATUS1: " + i.status);
+                    c(" ");
                 }
+                if (i.status === 'in-progress' && end <= 1) {
+                    i.status = 'in-progress';
+                    updateDisplayedContent();
+                    c("text2:   " + i.text);
+                    c("start2:  " + start);
+                    c("end2:    " + end);
+                    if (end <= 1) {
+                        i.status = 'done';
+                        updateDisplayedContent();
+                    }
+                    c("STATUS2: " + i.status);
+                    c(" ");
+                }
+                if (i.status === 'normal') i.status = 'normal';
             });
         }
-        console.log("last updatedDisplay");
         updateDisplayedContent();
     }
 
@@ -269,36 +252,43 @@ const subCards = (function () {
         "m_4_content": "fil2",
         "t_1_content": "itws01",
         "t_2_content": "ge02",
-        "w_1_content": "nstp2",
+        "t_3_content": "pathfit2",
+        "w_1_content": "itws01",
         "w_2_content": "itws01",
-        "w_3_content": "itws01",
-        "w_4_content": "cc102",
+        "w_3_content": "cc102",
         "th_1_content": "ge01",
         "th_2_content": "cc102",
         "th_3_content": "cc102",
-        "f_1_content": "pathfit2"
+        "f_1_content": "nstp2"
     };
 
     function updateDisplayedContent() {
         for (const day in daysAndSubjects) {
-            const element = document.getElementById(day);
-            if (element) {
-                element.style.whiteSpace = "pre-line";
+
+            const e = document.getElementById(day);
+
+            if (e) {
+
+                e.style.whiteSpace = "pre-line";
                 const subject = daysAndSubjects[day];
                 let content = "";
-                announcement[subject].forEach((item) => {
-                    if (item.text !== "") {
-                        const deadlineText = item.datetime
-                            ? `Until ${formatReadableDate(item.datetime)}`
+
+                announcement[subject].forEach((i) => {
+
+                    if (i.text !== "") {
+
+                        const dltxt = i.start
+                            ? `Until ${formatReadableDate(i.start)}`
                             : "";
 
-                        const statusClass = getStatusClass(item.status);
-                        const textDecoration = item.status === "done" ? "line-through" : "none"; // Check if status is "done"
+                        const statusClass = getStatusClass(i.status);
+                        const textDecoration = i.status === "done" ? "line-through" : "none";
 
-                        content += `<p><span id="status-circle" class="${statusClass}" style="background-color: ${getStatusColor(item.status)};"></span><span style="text-decoration: ${textDecoration};"> ${item.text}</span><span style="text-decoration: ${textDecoration}; color: var(--neutral-500); font-size: 10px;"> ${deadlineText}</span></p>`;
+                        content += `<p><span id="status-circle" class="${statusClass}" style="background-color: ${getStatusColor(i.status)};"></span><span style="text-decoration: ${textDecoration};"> ${i.text}</span><span style="text-decoration: ${textDecoration}; color: var(--neutral-500); font-size: 10px;"> ${dltxt}</span></p>`;
                     }
                 });
-                element.innerHTML = content;
+
+                e.innerHTML = content;
             }
         }
     }
@@ -338,48 +328,7 @@ const subCards = (function () {
         }
     }
 
-    clearInterval(updateStatusInterval); // Clear existing interval (if any) and start a new one
+    clearInterval(updateStatusInterval);
     updateStatusInterval = setInterval(updateStatus, 1000);
-
-    document.addEventListener('DOMContentLoaded', () => {
-        const copyButtons = document.querySelectorAll('.copy-text-button');
-
-        copyButtons.forEach(button => {
-            const reminderId = button.getAttribute('data-reminder');
-            const liElement = document.querySelector(`[data-reminder-id="${reminderId}"]`);
-            console.log(liElement);
-            const reminderText = liElement.textContent.trim();
-
-            if (reminderText) {
-            } else {
-                button.classList.add('hidden');
-            }
-        });
-
-        copyButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const reminderId = button.getAttribute('data-reminder');
-                const liElement = document.querySelector(`[data-reminder-id="${reminderId}"]`);
-                const reminderText = liElement.textContent.trim();
-
-                if (reminderText) {
-                    const textArea = document.createElement('textarea');
-                    textArea.value = reminderText;
-
-                    document.body.appendChild(textArea);
-
-                    textArea.select();
-                    document.execCommand('copy');
-
-                    document.body.removeChild(textArea);
-
-                    button.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
-                    setTimeout(() => {
-                        button.innerHTML = '<i class="fa-solid fa-clipboard"></i> Copy Text';
-                    }, 1500);
-                }
-            });
-        });
-    });
 
 })();

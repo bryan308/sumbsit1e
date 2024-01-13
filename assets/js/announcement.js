@@ -1,5 +1,5 @@
 const lastUp = document.querySelector(".lastUp");
-lastUp.innerHTML = '<!-- <span class="material-symbols-outlined">history</span> Fri, Jan 5, 10:09 AM -->';
+lastUp.innerHTML = '<span class="material-symbols-outlined">history</span> Sat, Jan 13, 10:16 AM';
 
 const announcement = {
     cc102: [
@@ -8,10 +8,15 @@ const announcement = {
             status: "" 
         },
         { 
-            text: "", 
-            status: "", 
-            datetime: ""
+            text: "Long Quiz", 
+            status: "normal"
         }
+    /*  { 
+            text: "", 
+            status: "important",
+            start: "2024-00-00T00:00:00",
+            end: "2024-00-00T00:00:00"
+        } */
     ],
     itnet02: [
         { 
@@ -21,7 +26,8 @@ const announcement = {
         { 
             text: "", 
             status: "", 
-            datetime: ""
+            start: "", 
+            end: ""
         }
     ],
     itws01: [
@@ -32,7 +38,8 @@ const announcement = {
         { 
             text: "", 
             status: "", 
-            datetime: ""
+            start: "", 
+            end: ""
         }
     ],
     ge01: [
@@ -43,7 +50,8 @@ const announcement = {
         { 
             text: "", 
             status: "", 
-            datetime: ""
+            start: "", 
+            end: ""
         }
     ],
     ge02: [
@@ -54,7 +62,8 @@ const announcement = {
         { 
             text: "", 
             status: "", 
-            datetime: ""
+            start: "", 
+            end: ""
         }
     ],
     fil2: [
@@ -65,7 +74,8 @@ const announcement = {
         { 
             text: "", 
             status: "", 
-            datetime: ""
+            start: "", 
+            end: ""
         }
     ],
     nstp2: [
@@ -75,8 +85,9 @@ const announcement = {
         },
         { 
             text: "", 
-            status: "", 
-            datetime: ""
+            status: "",
+            start: "",
+            end: ""
         }
     ],
     pathfit2: [
@@ -86,8 +97,9 @@ const announcement = {
         },
         { 
             text: "", 
-            status: "", 
-            datetime: ""
+            status: "",
+            start: "",
+            end: ""
         }
     ]
 };
