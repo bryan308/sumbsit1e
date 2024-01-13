@@ -34,7 +34,6 @@
     --cardbg: url(/assets/images/waves1.png);
     --logo-image: url(/assets/images/weblogoL.png);
     --default-font-family: 'Poppins', sans-serif;
-    --title-font: 'Poppins', sans-serif;
     --Tektur-font: 'Tektur', cursive;
 
     --card-text: #fefefe;
@@ -355,7 +354,6 @@ ul {
         box-shadow: 0px 4px 5px #1b1b1b1f;
         background: var(--secondary-bg);
         height: auto;
-        min-height: 300px;
         margin-top: 55px;
         border-top-right-radius: 10px;
         border-bottom-right-radius: 10px;
@@ -366,6 +364,7 @@ ul {
     .nav-menu.active {
         left: 0;
         padding: 24px 16px;
+        min-height: 300px;
     }
 
     .nav-item {
@@ -861,42 +860,9 @@ ul {
     display: block;
     color: var(--card-text);
     padding: 16px;
-    width: 70%;
+    width: 75%;
     transition: var(--gen-transition);
     z-index: var(--layer-3);
-}
-
-.sub-card-top-left img {
-    position: absolute;
-    top: -30px;
-    left: 0;
-    height: 40px;
-    opacity: 1;
-    transform: rotate(-45deg);
-    animation: helloKitty 2s linear infinite;
-    z-index: var(--layer-3);
-}
-
-@keyframes helloKitty {
-    0% {
-        transform: rotate(3deg);
-    }
-
-    25% {
-        transform: rotate(-5deg);
-    }
-
-    50% {
-        transform: rotate(3deg);
-    }
-
-    75% {
-        transform: rotate(-5deg);
-    }
-
-    100% {
-        transform: rotate(3deg);
-    }
 }
 
 .sub-card-top-left p,
@@ -926,7 +892,7 @@ ul {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 30%;
+    width: 25%;
 }
 
 .sub-card-top-right img:nth-child(1) {
@@ -1010,13 +976,10 @@ ul {
 .w-1-content,
 .w-2-content,
 .w-3-content,
-.w-4-content,
 .th-1-content,
 .th-2-content,
 .th-3-content,
-.f-1-content,
-.f-2-content,
-.sat-1-content {
+.f-1-content {
     display: block;
     opacity: 0;
     height: 0;
@@ -1035,13 +998,10 @@ ul {
 .w-1-content.active,
 .w-2-content.active,
 .w-3-content.active,
-.w-4-content.active,
 .th-1-content.active,
 .th-2-content.active,
 .th-3-content.active,
-.f-1-content.active,
-.f-2-content.active,
-.sat-1-content.active {
+.f-1-content.active {
     position: absolute;
     display: block;
     height: 100%;
@@ -1068,13 +1028,10 @@ ul {
 .w-1-content.closing,
 .w-2-content.closing,
 .w-3-content.closing,
-.w-4-content.closing,
 .th-1-content.closing,
 .th-2-content.closing,
 .th-3-content.closing,
-.f-1-content.closing,
-.f-2-content.closing,
-.sat-1-content.closing {
+.f-1-content.closing {
     display: block;
     opacity: 0;
     height: 0%;
